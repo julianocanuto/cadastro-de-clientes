@@ -1,0 +1,3 @@
+INSERT INTO tb_client (name, cpf, income, birth_date, children) VALUES ('Maria da Silva', '79615238452', 3522.44, '1994-07-20T10:30:00Z', 3);
+INSERT INTO tb_client (name, cpf, income, birth_date, children) VALUES ('Joaquim Ribeiro', '85615238496', 15263.0, '2000-09-17T11:02:03Z', 1);
+INSERT INTO tb_client (name, cpf, income, birth_date, children) VALUES ('Orlando Pontes', '72215248502', 7552.99, '1994-07-20T10:30:00Z', 0);
