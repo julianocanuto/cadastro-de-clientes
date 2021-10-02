@@ -1,5 +1,7 @@
 package com.julianocanuto.crud.challenge.services;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -19,5 +21,12 @@ public class ClientService {
 	public Page<Client> findAllPaged(PageRequest pageRequest) {
 		Page<Client> listOfClients = repository.findAll(pageRequest);
 		return listOfClients;
+	}
+
+	@Transactional(readOnly = true)
+	public Client findById(Long id) {
+		Optional<Client> obj = repository.findById(id);
+		Client entity = obj.isPresent() ? obj.get() : new Client();
+		return entity;
 	}
 }
