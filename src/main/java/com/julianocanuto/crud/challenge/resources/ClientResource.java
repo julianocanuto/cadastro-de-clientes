@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.julianocanuto.crud.challenge.entities.Client;
+import com.julianocanuto.crud.challenge.dto.ClientDTO;
 import com.julianocanuto.crud.challenge.services.ClientService;
 
 @RestController
@@ -22,7 +22,7 @@ public class ClientResource {
 	private ClientService service;
 
 	@GetMapping
-	public ResponseEntity<Page<Client>> findAll(
+	public ResponseEntity<Page<ClientDTO>> findAll(
 			@RequestParam(value = "page", defaultValue = "0") Integer page,
 			@RequestParam(value = "linesPerPage", defaultValue = "12") Integer linesPerPage,
 			@RequestParam(value = "direction", defaultValue = "ASC") String direction,
@@ -30,15 +30,15 @@ public class ClientResource {
 
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
 
-		Page<Client> list = service.findAllPaged(pageRequest);
+		Page<ClientDTO> list = service.findAllPaged(pageRequest);
 		return ResponseEntity.ok().body(list);
 	}
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<Client> findById(@PathVariable Long id) {
-		Client client = service.findById(id);
+	public ResponseEntity<ClientDTO> findById(@PathVariable Long id) {
+		ClientDTO clientDTO = service.findById(id);
 
-		return ResponseEntity.ok().body(client);
+		return ResponseEntity.ok().body(clientDTO);
 	}
 
 }
